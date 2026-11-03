@@ -43,6 +43,85 @@ body::after {
     background: rgba(10, 10, 10, 0.04);
     pointer-events: none;
 }
+
+[data-aos] {
+    opacity: 1;
+    transform: none;
+}
+
+@keyframes revealUp {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes revealSide {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.hero-content,
+.hero h2,
+.hero h1,
+.date-txt,
+.time-box,
+.timeline-card,
+.family-section,
+.family-column,
+.location-box,
+.rsvp-section {
+    animation: revealUp 0.9s ease-out both;
+}
+
+.family-column:nth-child(1) {
+    animation: revealSide 0.9s ease-out both;
+}
+
+.family-column:nth-child(2) {
+    animation: revealSide 0.9s ease-out 0.15s both;
+}
+
+.timeline-card:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.timeline-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.location-box,
+.rsvp-section {
+    animation-delay: 0.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-content,
+    .hero h2,
+    .hero h1,
+    .date-txt,
+    .time-box,
+    .timeline-card,
+    .family-section,
+    .family-column,
+    .location-box,
+    .rsvp-section {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
 /* Hero Section */
 .hero {
     height: 100vh;
@@ -550,62 +629,6 @@ footer {
     background: #050505;
 }
 
-/* Petal Container Style */
-#petal-container {
-    position: fixed;
-    top: -10%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* පින්තූර ක්ලික් කරන්න බාධාවක් වෙන්නේ නෑ */
-    z-index: 999;
-}
-
-/* Petal Style */
-.petal {
-    position: absolute;
-    background-color: #ffc0cb; /* Pink color - Gold වලට නම් #D4AF37 දාන්න */
-    border-radius: 150% 0 150% 0;
-    opacity: 0.7;
-    filter: blur(0.5px);
-    animation: fall linear infinite;
-}
-
-/* Petal Falling Animation */
-@keyframes fall {
-    0% {
-        transform: translateY(0vh) rotate(0deg) translateX(0px);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.8;
-    }
-    90% {
-        opacity: 0.4;
-    }
-    100% {
-        transform: translateY(110vh) rotate(360deg) translateX(50px);
-        opacity: 0;
-    }
-}
-
-/* Particle Style */
-.particle {
-    position: absolute;
-    background: radial-gradient(circle, #D4AF37 0%, rgba(212,175,55,0) 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    opacity: 0.8;
-    box-shadow: 0 0 10px #D4AF37;
-    animation: float-particle linear infinite;
-}
-
-@keyframes float-particle {
-    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-}
-
 /* Family Section Styling */
 .family-container {
     display: flex;
@@ -672,204 +695,4 @@ footer {
 @media (max-width: 768px) {
     .family-divider { display: none; }
     .family-column { width: 100%; }
-}
-
-
-#entrance-overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background:
-        linear-gradient(rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.38)),
-        url('back.png') center center / cover no-repeat;
-    z-index: 10000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 1s ease-in-out;
-}
-
-.animation-wrapper {
-    text-align: center;
-    width: 100%;
-    max-width: 500px;
-}
-
-.couple-container {
-    position: relative;
-    height: 200px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-}
-
-.run-char {
-    height: 120px; /* චරිත වල ප්‍රමාණය */
-    position: absolute;
-    bottom: 0;
-}
-
-/* මනාලයා දුවන එක */
-.groom-move {
-    left: -100px;
-    animation: run-in-groom 2.5s forwards ease-out;
-}
-
-@keyframes run-in-groom {
-    0% { left: -200px; opacity: 0; }
-    100% { left: calc(50% - 90px); opacity: 1; }
-}
-
-/* මනාලිය දුවන එක */
-.bride-move {
-    right: -100px;
-    animation: run-in-bride 2.5s forwards ease-out;
-}
-
-@keyframes run-in-bride {
-    0% { right: -200px; opacity: 0; }
-    100% { right: calc(50% - 90px); opacity: 1; }
-}
-
-/* අකුරු වල Styles */
-.names-display {
-    font-family: 'Playfair Display', serif; /* හෝ වෙනත් ලස්සන Cursive font එකක් */
-    font-size: 2rem;
-    color: #c5a059; /* Gold/Bronze පාට */
-    margin: 10px 0;
-    font-style: italic;
-    opacity: 0;
-    animation: fade-up 1.5s 2s forwards;
-}
-
-.sub-txt {
-    font-family: 'Montserrat', sans-serif;
-    letter-spacing: 3px;
-    font-size: 0.7rem;
-    color: #888;
-    opacity: 0;
-    animation: fade-up 1.5s 2.3s forwards;
-}
-
-@keyframes fade-up {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* පල්ලෙහා තියෙන Loading Line එක */
-.loader-line {
-    width: 0;
-    height: 2px;
-    background: #c5a059;
-    margin: 30px auto 0;
-    animation: load-bar 4s linear forwards;
-}
-
-@keyframes load-bar {
-    to { width: 150px; }
-}
-
-.fade-out-overlay { opacity: 0; pointer-events: none; }
-
-#entrance-overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-color: #fdf5e6;
-    z-index: 10000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-/* Wedding Frame/Border */
-.wedding-border {
-    position: absolute;
-    top: 20px; left: 20px; right: 20px; bottom: 20px;
-    border: 2px solid #c5a059;
-    pointer-events: none;
-    opacity: 0;
-    animation: border-draw 2s 1s forwards ease-in-out;
-}
-
-/* බෝඩර් එක වටේට ලස්සන මල් හෝ වැල් පින්තූරයක් දාන්නත් පුළුවන් */
-.wedding-border::before {
-    content: '✿'; /* මෙතනට ලස්සන කැටයමක් දාන්න */
-    position: absolute;
-    top: -15px; left: 50%;
-    transform: translateX(-50%);
-    background: #fdf5e6;
-    padding: 0 15px;
-    color: #c5a059;
-    font-size: 25px;
-}
-
-@keyframes border-draw {
-    0% { opacity: 0; transform: scale(1.05); }
-    100% { opacity: 1; transform: scale(1); }
-}
-
-.couple-container {
-    position: relative;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    perspective: 1000px;
-}
-
-.run-char {
-    height: 130px;
-    position: absolute;
-    bottom: 0;
-    /* දුවනවා වගේ පොඩි ගැස්සීමක් ඇඩ් කරමු */
-    animation: bobbing 0.5s infinite alternate ease-in-out;
-}
-
-@keyframes bobbing {
-    from { transform: translateY(0); }
-    to { transform: translateY(-5px); }
-}
-
-.groom-move {
-    left: -150px;
-    animation: run-in-groom 2.5s forwards ease-out, bobbing 0.5s infinite alternate;
-}
-
-.bride-move {
-    right: -150px;
-    animation: run-in-bride 2.5s forwards ease-out, bobbing 0.5s infinite alternate;
-}
-
-@keyframes run-in-groom {
-    0% { left: -300px; opacity: 0; }
-    100% { left: calc(50% - 95px); opacity: 1; }
-}
-
-@keyframes run-in-bride {
-    0% { right: -300px; opacity: 0; }
-    100% { right: calc(50% - 95px); opacity: 1; }
-}
-
-/* Magic Sparkles Styles */
-.sparkle {
-    position: absolute;
-    background: #c5a059;
-    width: 4px; height: 4px;
-    border-radius: 50%;
-    opacity: 0;
-    animation: sparkle-anim 1.5s infinite;
-}
-
-@keyframes sparkle-anim {
-    0% { transform: scale(0); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: scale(1.5) translateY(-50px); opacity: 0; }
-}
-
-.ornament {
-    color: #c5a059;
-    margin: 5px 0;
-    opacity: 0;
-    animation: fade-up 1.5s 2.5s forwards;
 }
