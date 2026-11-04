@@ -30,8 +30,8 @@ body::before {
     z-index: -2;
     background:
         linear-gradient(rgba(15, 12, 10, 0.08), rgba(15, 12, 10, 0.18)),
-        url('back.png') center center / cover no-repeat fixed;
-    filter: saturate(0.9) brightness(0.95) blur(1px);
+        url('BG.PNG') center center / cover no-repeat fixed;
+    filter: saturate(0.9) brightness(0.95);
     transform: scale(1.04);
 }
 
@@ -398,7 +398,7 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 80px 20px;
+    padding: 60px 20px;
     background: transparent;
     position: relative;
     overflow: hidden;
@@ -444,7 +444,7 @@ h3 {
     font-size: clamp(2rem, 3vw, 3.2rem);
     line-height: 1.2;
     color: #f8f2e8;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 /* Buttons */
@@ -458,7 +458,7 @@ h3 {
     padding: 18px 28px 18px 22px;
     border-radius: 999px;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 400;
     font-family: 'Cinzel', serif;
     font-size: clamp(1.5rem, 2vw, 3rem);
     line-height: 1.2;
@@ -544,7 +544,7 @@ h3 {
 }
 
 .rsvp-form {
-    max-width: 400px;
+    max-width: 300px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
